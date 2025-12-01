@@ -578,6 +578,41 @@ tbody tr:hover {
     font-size: 1.1rem;
 }
 
+/* User Info Detail Styles */
+.user-info-detail {
+    margin-top: 2rem;
+}
+
+.user-avatar-large {
+    text-align: center;
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+.user-info-table {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.user-info-table th {
+    text-align: left;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #2c3e50;
+    width: 40%;
+    border-bottom: 1px solid #ddd;
+}
+
+.user-info-table td {
+    padding: 1rem;
+    color: #7f8c8d;
+    border-bottom: 1px solid #ddd;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {

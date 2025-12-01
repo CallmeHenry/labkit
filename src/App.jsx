@@ -8,6 +8,7 @@ import ListDevices from './components/ListDevices';
 import EditDevice from './components/EditDevice';
 import SearchDevice from './components/SearchDevice';
 import ListUsers from './components/ListUsers';
+import UserInfo from './components/UserInfo';
 
 function App() {
   const navigate = useNavigate();
@@ -80,6 +81,7 @@ function App() {
           <Route path="/devices/edit/:id" element={<EditDevice />} />
           <Route path="/devices/search" element={<SearchDevice />} />
           <Route path="/users" element={<ListUsers />} />
+          <Route path="/users/:id" element={<UserInfo />} />
         </Routes>
       </main>
     </>
