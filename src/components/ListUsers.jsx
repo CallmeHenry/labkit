@@ -7,6 +7,7 @@ export default function ListUsers() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const isAdmin = localStorage.getItem('isAdmin') === 'true';
 
   useEffect(() => {
     fetchUsers();
@@ -25,6 +26,25 @@ export default function ListUsers() {
 
   const handleUserClick = (userId) => {
     navigate(`/users/${userId}`);
+  };
+
+  const handleDelete = async (userId, userName, e) => {
+    e.stopPropagation();
+    
+    if (!isAdmin) {
+      alert('Only admins can delete users');
+      return;
+    }
+
+    if (window.confirm(`Are you sure you want to delete ${userName}?`)) {
+      try {
+        await userAPI.deleteUser(userId);
+        alert('User deleted successfully');
+        fetchUsers();
+      } catch (error) {
+        alert(error.message);
+      }
+    }
   };
 
   if (loading) {
@@ -58,11 +78,18 @@ export default function ListUsers() {
               <span>👤</span>
             </div>
             <div className="user-info">
-              <h3>{user.name}</h3>
+              <h3>{user.name} {user.isAdmin && <span className="admin-badge">Admin</span>}</h3>
               {user.email && <p className="user-email">{user.email}</p>}
             </div>
-            <div className="user-arrow">
-              <span>→</span>
+            <div className="user-actions">
+              <button 
+                className="btn-delete-small"
+                onClick={(e) => handleDelete(user._id, user.name, e)}
+                title={isAdmin ? 'Delete user' : 'Only admins can delete'}
+              >
+                Delete
+              </button>
+              <span className="user-arrow">→</span>
             </div>
           </div>
         ))}

@@ -591,6 +591,37 @@ tbody tr:hover {
     color: #999;
 }
 
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-delete-small {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.btn-delete-small:hover {
+    background-color: #c0392b;
+}
+
+.admin-badge {
+    font-size: 0.7rem;
+    background-color: #3498db;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    margin-left: 0.5rem;
+}
+
 .no-data {
     text-align: center;
     color: #7f8c8d;

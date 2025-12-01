@@ -192,4 +192,21 @@ export const userAPI = {
     
     return response.json();
   },
+
+  deleteUser: async (id) => {
+    const token = getAuthToken();
+    const response = await fetch(`${API_BASE_URL}/users/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'token': token,
+      },
+    });
+    
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to delete user');
+    }
+    
+    return response.json();
+  },
 };

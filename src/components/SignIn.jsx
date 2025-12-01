@@ -31,6 +31,7 @@ export default function SignIn() {
       localStorage.setItem('token', data.token);
       localStorage.setItem('userName', data.user.name);
       localStorage.setItem('userId', data.user._id);
+      localStorage.setItem('isAdmin', data.user.isAdmin);
       
       alert(`Welcome ${data.user.name}!`);
       navigate('/');
