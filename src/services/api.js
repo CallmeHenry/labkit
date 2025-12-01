@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://192.168.0.69:3000/api';
+const API_BASE_URL = 'http://localhost:3500/api';
 
 const getAuthToken = () => {
     return localStorage.getItem('token');
@@ -120,20 +120,76 @@ export const deviceAPI = {
         return response.json();
     },
 
-    deleteDevice: async (id) => {
-        const token = getAuthToken();
-        const response = await fetch(`${API_BASE_URL}/devices/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'token': token,
-            },
-        });
+  deleteDevice: async (id) => {
+    const token = getAuthToken();
+    const response = await fetch(`${API_BASE_URL}/devices/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'token': token,
+      },
+    });
+    
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to delete device');
+    }
+    
+    return response.json();
+  },
+};
 
-        if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.error || 'Failed to delete device');
-        }
+// User API calls
+export const userAPI = {
+  getAllUsers: async () => {
+    const token = getAuthToken();
+    const response = await fetch(`${API_BASE_URL}/users`, {
+      method: 'GET',
+      headers: {
+        'token': token,
+      },
+    });
+    
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to fetch users');
+    }
+    
+    return response.json();
+  },
 
-        return response.json();
-    },
+  getUserById: async (id) => {
+    const token = getAuthToken();
+    const response = await fetch(`${API_BASE_URL}/users/${id}`, {
+      method: 'GET',
+      headers: {
+        'token': token,
+      },
+    });
+    
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to fetch user');
+    }
+    
+    return response.json();
+  },
+
+  updateUser: async (id, userData) => {
+    const token = getAuthToken();
+    const response = await fetch(`${API_BASE_URL}/users/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'token': token,
+      },
+      body: JSON.stringify(userData),
+    });
+    
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to update user');
+    }
+    
+    return response.json();
+  },
 };
