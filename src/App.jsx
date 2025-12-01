@@ -30,6 +30,7 @@ function App() {
       <header>
         <nav className="navbar">
           <div className="navbar-brand">
+            <img src="/logo.png" alt="Computer Lab System" className="navbar-logo" />
             <h1>ComputerLab</h1>
           </div>
           <ul className="nav-items">
