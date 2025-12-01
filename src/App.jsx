@@ -9,6 +9,7 @@ import EditDevice from './components/EditDevice';
 import SearchDevice from './components/SearchDevice';
 import ListUsers from './components/ListUsers';
 import UserInfo from './components/UserInfo';
+import UserProfile from './components/UserProfile';
 
 function App() {
   const navigate = useNavigate();
@@ -57,6 +58,9 @@ function App() {
                 <li>
                   <Link to="/users">Users</Link>
                 </li>
+                <li>
+                  <Link to="/profile">My Profile</Link>
+                </li>
                 <li className="user-info">
                   <span>👤 {userName}</span>
                 </li>
@@ -82,6 +86,7 @@ function App() {
           <Route path="/devices/search" element={<SearchDevice />} />
           <Route path="/users" element={<ListUsers />} />
           <Route path="/users/:id" element={<UserInfo />} />
+          <Route path="/profile" element={<UserProfile />} />
         </Routes>
       </main>
     </>
