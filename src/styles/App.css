@@ -445,6 +445,15 @@ tbody tr:hover {
     margin: 0;
 }
 
+/* Devices Preview on Home */
+.devices-preview {
+    margin: 3rem 0;
+}
+
+.devices-preview h2 {
+    margin-bottom: 1.5rem;
+}
+
 /* Search Device Styles */
 .search-container {
     margin-top: 1.5rem;
