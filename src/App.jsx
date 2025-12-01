@@ -10,6 +10,7 @@ import SearchDevice from './components/SearchDevice';
 import ListUsers from './components/ListUsers';
 import UserInfo from './components/UserInfo';
 import UserProfile from './components/UserProfile';
+import EditProfile from './components/EditProfile';
 
 function App() {
   const navigate = useNavigate();
@@ -87,6 +88,7 @@ function App() {
           <Route path="/users" element={<ListUsers />} />
           <Route path="/users/:id" element={<UserInfo />} />
           <Route path="/profile" element={<UserProfile />} />
+          <Route path="/profile/edit" element={<EditProfile />} />
         </Routes>
       </main>
     </>
