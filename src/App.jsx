@@ -7,6 +7,7 @@ import AddDevice from './components/AddDevice';
 import ListDevices from './components/ListDevices';
 import EditDevice from './components/EditDevice';
 import SearchDevice from './components/SearchDevice';
+import ListUsers from './components/ListUsers';
 
 function App() {
   const navigate = useNavigate();
@@ -52,6 +53,9 @@ function App() {
                     <li><Link to="/devices/search">Search Device</Link></li>
                   </ul>
                 </li>
+                <li>
+                  <Link to="/users">Users</Link>
+                </li>
                 <li className="user-info">
                   <span>👤 {userName}</span>
                 </li>
@@ -75,6 +79,7 @@ function App() {
           <Route path="/devices/list" element={<ListDevices />} />
           <Route path="/devices/edit/:id" element={<EditDevice />} />
           <Route path="/devices/search" element={<SearchDevice />} />
+          <Route path="/users" element={<ListUsers />} />
         </Routes>
       </main>
     </>
