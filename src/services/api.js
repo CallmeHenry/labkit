@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:3500/api';
+const API_BASE_URL = import.meta.env.API_BASE_URL || 'http://localhost:3000/api';
 
 const getAuthToken = () => {
     return localStorage.getItem('token');
@@ -120,93 +120,93 @@ export const deviceAPI = {
         return response.json();
     },
 
-  deleteDevice: async (id) => {
-    const token = getAuthToken();
-    const response = await fetch(`${API_BASE_URL}/devices/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'token': token,
-      },
-    });
-    
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error || 'Failed to delete device');
-    }
-    
-    return response.json();
-  },
+    deleteDevice: async (id) => {
+        const token = getAuthToken();
+        const response = await fetch(`${API_BASE_URL}/devices/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'token': token,
+            },
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || 'Failed to delete device');
+        }
+
+        return response.json();
+    },
 };
 
 // User API calls
 export const userAPI = {
-  getAllUsers: async () => {
-    const token = getAuthToken();
-    const response = await fetch(`${API_BASE_URL}/users`, {
-      method: 'GET',
-      headers: {
-        'token': token,
-      },
-    });
-    
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error || 'Failed to fetch users');
-    }
-    
-    return response.json();
-  },
+    getAllUsers: async () => {
+        const token = getAuthToken();
+        const response = await fetch(`${API_BASE_URL}/users`, {
+            method: 'GET',
+            headers: {
+                'token': token,
+            },
+        });
 
-  getUserById: async (id) => {
-    const token = getAuthToken();
-    const response = await fetch(`${API_BASE_URL}/users/${id}`, {
-      method: 'GET',
-      headers: {
-        'token': token,
-      },
-    });
-    
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error || 'Failed to fetch user');
-    }
-    
-    return response.json();
-  },
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || 'Failed to fetch users');
+        }
 
-  updateUser: async (id, userData) => {
-    const token = getAuthToken();
-    const response = await fetch(`${API_BASE_URL}/users/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'token': token,
-      },
-      body: JSON.stringify(userData),
-    });
-    
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error || 'Failed to update user');
-    }
-    
-    return response.json();
-  },
+        return response.json();
+    },
 
-  deleteUser: async (id) => {
-    const token = getAuthToken();
-    const response = await fetch(`${API_BASE_URL}/users/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'token': token,
-      },
-    });
-    
-    if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error || 'Failed to delete user');
-    }
-    
-    return response.json();
-  },
+    getUserById: async (id) => {
+        const token = getAuthToken();
+        const response = await fetch(`${API_BASE_URL}/users/${id}`, {
+            method: 'GET',
+            headers: {
+                'token': token,
+            },
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || 'Failed to fetch user');
+        }
+
+        return response.json();
+    },
+
+    updateUser: async (id, userData) => {
+        const token = getAuthToken();
+        const response = await fetch(`${API_BASE_URL}/users/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'token': token,
+            },
+            body: JSON.stringify(userData),
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || 'Failed to update user');
+        }
+
+        return response.json();
+    },
+
+    deleteUser: async (id) => {
+        const token = getAuthToken();
+        const response = await fetch(`${API_BASE_URL}/users/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'token': token,
+            },
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || 'Failed to delete user');
+        }
+
+        return response.json();
+    },
 };
